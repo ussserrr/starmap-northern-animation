@@ -1,5 +1,7 @@
-# starmap-northern
+# starmap-northern-animation
 ![cover](/cover.png)
+
+To see static version instead of animated please go to [starmap-northern](https://github.com/ussserrr/starmap-northern).
 
 
 ## Overview and features
@@ -27,11 +29,6 @@ to install them.
   - geopy: retrieve geolocation by a string from the Internet
   - BeautifulSoup4: HTML files handling (used internal by astropy)
 
-Desired (the following packages were used while developing):
-  - PyQt5
-  - IPython and Jupyter
-  - Spyder IDE
-
 
 ## Usage
 Edit `constellations` dictionary in `dl_constellations.py` file to include/exclude desired stars/constellations. Form of the constellation (asterism) is set by the sequence of stars in which that constellation needs to be drawn to get its form. Think of it like about a task where you need to draw some figure, not taking away the pencil from the paper. So of course you can go through the same points and lines where you've already been. For example, let's see Ursa Major ('UMa' code) constellation. For telling the program to draw its Big Dipper (Plough) asterism we need to add following line at `constellations` `OrderedDict`:
@@ -53,4 +50,4 @@ To run main script execute
 ```bash
 $ python3 sky_map.py
 ```
-but it's recommended to use IPython (in a browser or Spyder IDE) instead of pure Python.
+and expand the appeared window on the fullscreen. You might want to adjust position of all elements by changing according parameters of matplotlib instances.

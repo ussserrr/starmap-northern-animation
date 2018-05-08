@@ -28,7 +28,6 @@ from datetime import datetime, timedelta
 import time
 
 from util import StarChart, fonts, plot_size
-from dl_constellations import constellations as constellations_dict
 
 
 
@@ -39,7 +38,7 @@ from dl_constellations import constellations as constellations_dict
 # flag and in the last case also set latitude, longitude and altitude in the class Loc
 #
 location_str = "Syktyvkar"
-internet_geolocation = 0
+internet_geolocation = 1
 if not internet_geolocation:
     class Loc:
         """
@@ -55,7 +54,7 @@ if not internet_geolocation:
 # Leave custom_time=None or custom_time=0 to use current OS time or specify
 # the custom time as datetime(year, month, day, hours, minutes, seconds, ms)
 #
-custom_time = datetime(2018, 4, 29, 0, 19, 42, 00000)
+custom_time = None  # datetime(2018, 4, 29, 0, 19, 42, 00000)
 
 
 #
@@ -65,12 +64,19 @@ custom_time = datetime(2018, 4, 29, 0, 19, 42, 00000)
 #   'local': specify list for TLE by yourself
 # Set all keys to '0' values to skip ISS plotting
 #
-tle_type = { 'internet': 0,
+tle_type = { 'internet': 1,
              'internet_by_url': 0,
-             'local': 1 }
+             'local': 0 }
 tle_url = 'https://www.celestrak.com/NORAD/elements/stations.txt'
 tle_local = [ '1 25544U 98067A   18116.84910257  .00002058  00000-0  38261-4 0  9992',
               '2 25544  51.6422 274.6376 0002768  23.1132 122.6984 15.54167281110534' ]
+
+
+# animation_interval of calling of the updating handler, ms
+animation_interval = 250  # ms
+
+# multiplier of the time
+time_scale = 10
 
 
 benchmark = False
@@ -176,10 +182,6 @@ ax.legend( labelspacing=2, fontsize=fonts['legend'], handletextpad=2, borderpad=
 
 # objects to redraw
 anim_tuple = elements_to_animate + text_line
-# interval of calling of the updating handler
-interval = 250  # ms
-# multiplier of time
-time_scale = 10
 
 if benchmark:
     import time
@@ -198,7 +200,7 @@ def update(frame):
         start = end
 
     global obs_time
-    obs_time += interval * time_scale * u.ms
+    obs_time += animation_interval * time_scale * u.ms
 
     star_chart.update(obs_time)
     text_line[0].set_text( "{0}, ( {1:.2f}, {2:.2f} )\n\
@@ -209,6 +211,6 @@ def update(frame):
     return anim_tuple
 
 ani = animation.FuncAnimation( fig, update, init_func=lambda: anim_tuple,
-                               interval=interval, blit=True )
+                               interval=animation_interval, blit=True )
 
 plt.show()

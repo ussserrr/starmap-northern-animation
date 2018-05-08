@@ -16,13 +16,10 @@ import ephem
 import pyorbital.orbital
 
 import functools
-from matplotlib.cbook import STEP_LOOKUP_MAP
 from matplotlib.mlab import contiguous_regions  # deprecated (moved to matplotlib.cbook)
 import matplotlib.collections as mcoll
 
 import sys, os
-
-import astropy.table
 
 
 
@@ -173,6 +170,7 @@ def get_data(stars_db_name, constellations_db_name):
 
     # generate constellations forms if there is no one
     if not os.path.isfile(constellations_db_name):
+        from dl_constellations import constellations as constellations_dict
         constellations_forms = extract_forms(constellations_dict, stars)
         constellations_forms.write(constellations_db_name, format='ascii.html', overwrite=True)
     else:
@@ -204,9 +202,6 @@ def generate_polycollection(ax, x, y1, y2):
     where = y2>=y1
     kwargs = { 'facecolor': colors['fov_outer'],
                'alpha': 0.25 }
-
-    step = None
-    interpolate = False
 
     # Convert the arrays so we can work with them
     x = np.ma.masked_invalid(ax.convert_xunits(x))
