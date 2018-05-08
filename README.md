@@ -9,9 +9,9 @@ Star map of the northern hemisphere made with Python packages for astronomy: ast
 
 The main program puts all constellations forms on the plot and draws over the main plane the field of view: the circle showing the region that observer can see at this time in this geolocation. So, 2 coordinate systems are present: bigger outer circle corresponds to RA-dec (ICRS, equatorial coordinate system, J2000.0 equinox (default for astropy)) and smaller inner circle goes with alt-az (horizontal coordinate system). Additionally, Sun, Moon, Solar system planets and ISS are placed on the plot (if currently located under the northern hemisphere sky).
 
-The small circle is a projection of the field-of-view (FOV) on the big ICRS circle and that's the cause why its form is not an ideal circle and why the altitude axis is curved. Only if an observation location is the North Pole point the FOV will have a round shape and also centers of two circles will fit each other. The more you move away from the North Pole the bigger a distortion of the FOV circle and constellations. The straight line is the *celestial meridian*. The intersection of two lines is a current *zenith*.
+The small circle is a projection of the field-of-view (FOV) on the big ICRS circle and that's the cause why its form is not an ideal circle and why the altitude axis is curved. Only if an observation location is the North Pole point the FOV will have a round shape and also centers of two circles will fit each other. The more you move away from the North Pole the bigger a distortion of the FOV circle and constellations. The straight line is the *celestial meridian*. The intersection of two lines is a current *zenith*. Note that around the horizon line sky objects are less observable due to the thicker atmosphere and the diffractions phenomena.
 
-Note that around the horizon line sky objects are less observable due to the thicker atmosphere and the diffractions phenomena.
+The time scaling of the animation and FPS parameter are adjustable through the corresponding variables (look for *Settings section* in the main file).
 
 The app can be used for educational purposes and planning of astronomical observations.
 
@@ -48,6 +48,6 @@ Also, before starting the main script you can specify some settings e.g. online/
 
 To run main script execute
 ```bash
-$ python3 sky_map.py
+$ python3 sky_map_a.py
 ```
-and expand the appeared window on the fullscreen. You might want to adjust position of all elements by changing according parameters of matplotlib instances.
+and expand the appeared window to the fullscreen. You might want to adjust position of all elements by changing according parameters of matplotlib instances.

@@ -59,14 +59,14 @@ custom_time = None  # datetime(2018, 4, 29, 0, 19, 42, 00000)
 
 #
 # Choose what TLE to use (only one key at a time can have '1' value).
-#   'internet': use pyobject to retrieve TLE
-#   'internet_by_url': use custom URL to download TLE
-#   'local': specify list for TLE by yourself
+#   'internet':            use pyobject to retrieve TLE
+#   'internet_by_url':     use custom URL to download TLE
+#   'local':               specify list for TLE by yourself
 # Set all keys to '0' values to skip ISS plotting
 #
-tle_type = { 'internet': 1,
-             'internet_by_url': 0,
-             'local': 0 }
+tle_type = { 'internet':            1,
+             'internet_by_url':     0,
+             'local':               0 }
 tle_url = 'https://www.celestrak.com/NORAD/elements/stations.txt'
 tle_local = [ '1 25544U 98067A   18116.84910257  .00002058  00000-0  38261-4 0  9992',
               '2 25544  51.6422 274.6376 0002768  23.1132 122.6984 15.54167281110534' ]

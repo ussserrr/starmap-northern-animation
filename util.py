@@ -40,7 +40,7 @@ markers = { 'moon': 25,
             'planet': 10 }
 
 # 'light' or 'dark'
-style = 'light'
+style = 'dark'
 
 # relative to the figure size (0-1) and not including axes ticklabels
 plot_size = 0.95
@@ -314,6 +314,7 @@ class StarChart():
         """
 
         fig = plt.figure(dpi=dpi)
+        fig.canvas.set_window_title('starmap-northern-animation')
 
         # docs quote: add an axes at position [left, bottom, width, height] where
         # all quantities are in fractions of figure width and height
