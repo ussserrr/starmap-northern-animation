@@ -16,7 +16,7 @@ import ephem
 import pyorbital.orbital
 
 import functools
-from matplotlib.mlab import contiguous_regions  # deprecated (moved to matplotlib.cbook)
+from matplotlib.cbook import contiguous_regions
 import matplotlib.collections as mcoll
 
 import sys, os
@@ -323,7 +323,7 @@ class StarChart():
         ax.set_theta_zero_location('N')
         ax.set_theta_direction(-1)  # anti-clockwise
 
-        ax.set_rlim(90, -45)  # same as set_ylim()
+        ax.set_ylim(-45, 90)
         ax.set_yticks(np.arange(-45, 90+0.1, 15))
 
         ax.grid(True)

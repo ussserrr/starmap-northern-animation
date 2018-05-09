@@ -6,8 +6,8 @@
 # TODO: map where only FOV and center is a current 'polar star' analogue (zenith)
 # TODO: case when not all stars were downloaded
 # TODO: implement constellations as graphs
-# TODO: ask for lateset matplotlib fix
-
+# TODO: implement map as custom axes projection (see
+#       https://matplotlib.org/gallery/misc/custom_projection.html#sphx-glr-gallery-misc-custom-projection-py)
 
 
 import sys
@@ -183,6 +183,7 @@ ax.legend( labelspacing=2, fontsize=fonts['legend'], handletextpad=2, borderpad=
 # objects to redraw
 anim_tuple = elements_to_animate + text_line
 
+# display time elapsed between last two animation updates
 if benchmark:
     import time
     start = time.time()
